@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitTrack - Meus Treinos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Tela Inicial: Lista de Treinos -->
+    <section id="tela-inicial" class="tela ativa">
+      <header class="app-header">
+        <h1>🏋️ FitTrack</h1>
+        <p>Meus Treinos</p>
+      </header>
+      
+      <div id="lista-treinos" class="lista-treinos">
+        <!-- Treinos serão inseridos aqui via JS -->
+      </div>
+      
+      <button id="btn-adicionar-treino" class="btn btn-primary btn-block">
+        + Adicionar Treino
+      </button>
+    </section>
+
+    <!-- Tela: Criar Treino -->
+    <section id="tela-criar-treino" class="tela">
+      <header class="app-header">
+        <button class="btn-voltar" onclick="voltarTelaInicial()">← Voltar</button>
+        <h2>Novo Treino</h2>
+      </header>
+      
+      <div class="form-container">
+        <label for="nome-treino">Nome do Treino</label>
+        <input type="text" id="nome-treino" placeholder="Ex: Treino A - Peito" maxlength="50">
+        
+        <button id="btn-salvar-treino" class="btn btn-primary btn-block">
+          Salvar Treino
+        </button>
+      </div>
+    </section>
+
+    <!-- Tela: Detalhes do Treino -->
+    <section id="tela-treino" class="tela">
+      <header class="app-header">
+        <button class="btn-voltar" onclick="voltarTelaInicial()">← Voltar</button>
+        <h2 id="titulo-treino">Treino</h2>
+      </header>
+      
+      <div id="lista-exercicios" class="lista-exercicios">
+        <!-- Exercícios serão inseridos aqui via JS -->
+      </div>
+      
+      <button id="btn-adicionar-exercicio" class="btn btn-primary btn-block">
+        + Adicionar Exercício
+      </button>
+    </section>
+
+    <!-- Tela: Criar Exercício -->
+    <section id="tela-criar-exercicio" class="tela">
+      <header class="app-header">
+        <button class="btn-voltar" onclick="voltarTelaTreino()">← Voltar</button>
+        <h2>Novo Exercício</h2>
+      </header>
+      
+      <div class="form-container">
+        <label for="nome-exercicio">Nome do Exercício</label>
+        <input type="text" id="nome-exercicio" placeholder="Ex: Supino Reto" maxlength="50">
+        
+        <label for="num-series">Número de Séries</label>
+        <input type="number" id="num-series" min="1" max="10" value="3">
+        
+        <label for="num-reps">Repetições por Série</label>
+        <input type="number" id="num-reps" min="1" max="50" value="12">
+        
+        <button id="btn-salvar-exercicio" class="btn btn-primary btn-block">
+          Salvar Exercício
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal de Confirmação -->
+  <div id="modal-confirmacao" class="modal">
+    <div class="modal-content">
+      <h3>Confirmar Exclusão</h3>
+      <p id="modal-mensagem">Deseja excluir este treino?</p>
+      <div class="modal-botoes">
+        <button id="btn-cancelar-excluir" class="btn btn-secondary">Cancelar</button>
+        <button id="btn-confirmar-excluir" class="btn btn-danger">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

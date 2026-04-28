@@ -1,0 +1,551 @@
+.btn-relogio {
+  background: var(--verde-claro);
+  color: var(--verde-escuro);
+  border-radius: 8px;
+  font-size: 16px;
+  margin-right: 8px;
+}
+.btn-relogio:hover {
+  background: var(--verde-medio);
+  color: var(--branco);
+}
+
+.timer-descanso {
+  font-size: 15px;
+  color: var(--verde-escuro);
+  font-weight: 600;
+}
+.timer-finalizado {
+  color: var(--perigo);
+  animation: pulse 0.5s 2;
+}
+.btn-expandir {
+  background: var(--cinza-medio);
+  color: var(--verde-escuro);
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-expandir:hover {
+  background: var(--verde-claro);
+}
+
+.treino-expandido {
+  animation: fadeIn 0.2s ease;
+}
+
+.card-exercicio-mini {
+  padding: 10px 14px;
+  font-size: 15px;
+  box-shadow: none;
+  border-left: 3px solid var(--verde-medio);
+  background: var(--cinza-medio);
+}
+/* ========================================
+   FitTrack - Estilos CSS
+   Aplicação mobile-first para treinos
+   ======================================== */
+
+/* --- Variáveis de Cores --- */
+:root {
+  --verde-claro: #4ADE80;
+  --verde-medio: #22C55E;
+  --verde-escuro: #15803D;
+  --verde-fundo: #F0FDF4;
+  --cinza-claro: #F9FAFB;
+  --cinza-medio: #E5E7EB;
+  --cinza-escuro: #374151;
+  --branco: #FFFFFF;
+  --sombra: rgba(0, 0, 0, 0.1);
+  --sucesso: #10B981;
+  --perigo: #EF4444;
+}
+
+/* --- Reset e Base --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--cinza-claro);
+  color: var(--cinza-escuro);
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- Container Principal --- */
+.app-container {
+  max-width: 100%;
+  min-height: 100vh;
+  background: var(--cinza-claro);
+}
+
+/* --- Telas --- */
+.tela {
+  display: none;
+  padding: 16px;
+  min-height: 100vh;
+}
+
+.tela.ativa {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Header --- */
+.app-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--verde-medio);
+}
+
+.app-header h1 {
+  font-size: 28px;
+  color: var(--verde-escuro);
+  margin-bottom: 4px;
+}
+
+.app-header h2 {
+  font-size: 22px;
+  color: var(--verde-escuro);
+}
+
+.app-header p {
+  color: var(--cinza-escuro);
+  font-size: 14px;
+}
+
+/* --- Botão Voltar --- */
+.btn-voltar {
+  background: none;
+  border: none;
+  color: var(--verde-medio);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.btn-voltar:hover {
+  color: var(--verde-escuro);
+}
+
+/* --- Cards de Treinos --- */
+.lista-treinos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card-treino {
+  background: var(--branco);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px var(--sombra);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-treino:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--sombra);
+}
+
+.card-treino-info {
+  flex: 1;
+  cursor: pointer;
+}
+
+.card-treino-nome {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--cinza-escuro);
+  margin-bottom: 4px;
+}
+
+.card-treino-info p {
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.card-treino-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-card {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-abrir {
+  background: var(--verde-medio);
+  color: var(--branco);
+}
+
+.btn-abrir:hover {
+  background: var(--verde-escuro);
+}
+
+.btn-excluir {
+  background: var(--perigo);
+  color: var(--branco);
+}
+
+.btn-excluir:hover {
+  background: #DC2626;
+}
+
+/* --- Lista de Exercícios --- */
+.lista-exercicios {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.card-exercicio {
+  background: var(--branco);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px var(--sombra);
+}
+
+.card-exercicio.concluido {
+  border-left: 4px solid var(--sucesso);
+}
+
+.exercicio-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.exercicio-nome {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--cinza-escuro);
+}
+
+.exercicio-status {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.exercicio-status.em-andamento {
+  background: var(--verde-fundo);
+  color: var(--verde-medio);
+}
+
+.exercicio-status.concluido {
+  background: #D1FAE5;
+  color: var(--sucesso);
+}
+
+/* --- Séries do Exercício --- */
+.exercicio-series {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.serie-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--cinza-claro);
+  border-radius: 8px;
+}
+
+.serie-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Checkbox customizado para série */
+.serie-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--verde-medio);
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.serie-numero {
+  font-weight: 600;
+  color: var(--cinza-escuro);
+}
+
+.serie-contador {
+  font-size: 15px;
+  color: var(--cinza-escuro);
+}
+
+.serie-contador.concluido {
+  color: var(--sucesso);
+  font-weight: 600;
+}
+
+.serie-botoes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-serie {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-menos {
+  background: var(--cinza-medio);
+  color: var(--cinza-escuro);
+}
+
+.btn-menos:hover {
+  background: #D1D5DB;
+}
+
+.btn-mais {
+  background: var(--verde-medio);
+  color: var(--branco);
+}
+
+.btn-mais:hover {
+  background: var(--verde-escuro);
+}
+
+.btn-mais:disabled {
+  background: var(--cinza-medio);
+  cursor: not-allowed;
+}
+
+/* --- Formulário --- */
+.form-container {
+  background: var(--branco);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px var(--sombra);
+}
+
+.form-container label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cinza-escuro);
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+.form-container label:first-of-type {
+  margin-top: 0;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid var(--cinza-medio);
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.form-container input:focus {
+  outline: none;
+  border-color: var(--verde-medio);
+}
+
+/* --- Botões --- */
+.btn {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--verde-medio);
+  color: var(--branco);
+}
+
+.btn-primary:hover {
+  background: var(--verde-escuro);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--cinza-medio);
+  color: var(--cinza-escuro);
+}
+
+.btn-secondary:hover {
+  background: #D1D5DB;
+}
+
+.btn-danger {
+  background: var(--perigo);
+  color: var(--branco);
+}
+
+.btn-danger:hover {
+  background: #DC2626;
+}
+
+.btn-block {
+  width: 100%;
+  display: block;
+}
+
+/* --- Mensagem Vazia --- */
+.mensagem-vazia {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6B7280;
+}
+
+.mensagem-vazia span {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.mensagem-vazia p {
+  font-size: 15px;
+}
+
+/* --- Modal --- */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.ativo {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-content {
+  background: var(--branco);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px;
+  max-width: 320px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-content h3 {
+  color: var(--cinza-escuro);
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.modal-content p {
+  color: #6B7280;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.modal-botoes {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.modal-botoes .btn {
+  flex: 1;
+  padding: 12px;
+}
+
+/* --- Responsividade --- */
+@media (min-width: 768px) {
+  .app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px var(--sombra);
+  }
+  
+  .tela {
+    padding: 24px;
+  }
+}
+
+/* --- Animações Extras --- */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.btn-primary:active {
+  animation: pulse 0.1s ease;
+}
+
+/* --- Scrollbar Personalizada --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cinza-claro);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cinza-medio);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
